@@ -20,10 +20,10 @@ Where is the data backed up and how to restore it (or a link to a more generic p
 How own the service. It is important to always have owners for each services deployed in production.
 
 ## Other Documentations
-[Overview](https://[...].git)
-[Source Code](https://[...].git)
-[Developer Documentation](https://[...].git)
-[User Manual](https://[...].git)
+* [Overview](https://[...].git)
+* [Source Code](https://[...].git)
+* [Developer Documentation](https://[...].git)
+* [User Manual](https://[...].git)
 
 ## Deployment
 Where is the service deployed?
