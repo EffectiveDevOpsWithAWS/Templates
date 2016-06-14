@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 from troposphere import Ref, Template, ec2, Parameter, Output, Join, GetAtt, Base64
+from json import load
+from urllib2 import urlopen
 
 t = Template()
 
@@ -13,6 +15,9 @@ kp = Parameter(
   )
 t.add_parameter(kp)
 
+public_ip = load(urlopen('http://jsonip.com'))['ip']
+public_cidrip = "%s/32" % public_ip
+
 sg = ec2.SecurityGroup('HelloWolrdWebServerSecurityGroup')
 sg.GroupDescription = "Allow SSH and TCP/3000 access"
 sg.SecurityGroupIngress = [
@@ -20,7 +25,7 @@ ec2.SecurityGroupRule(
     IpProtocol="tcp",
     FromPort="22",
     ToPort="22",
-    CidrIp="0.0.0.0/0",
+    CidrIp=public_cidrip,
   ),
 ec2.SecurityGroupRule(
     IpProtocol="tcp",
